@@ -1,11 +1,13 @@
+import { Stack } from "native-base";
 import React from "react";
 import { View, Text } from "react-native";
+import GeneralHeader from "../../../components/header/GeneralHeader";
 
 const SettingScreen = () => {
   return (
-    <View>
-      <Text>Settings</Text>
-    </View>
+    <Stack>
+      <GeneralHeader title="Settings" />
+    </Stack>
   );
 };
 
