@@ -1,6 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { useTheme } from "styled-components";
 import DailyMenuScreen from "../page/customer/menu/DailyMenuScreen";
 import NotificationScreen from "../page/customer/notification/NotificationScreen";
 import ProfileScreen from "../page/customer/profile/ProfileScreen";
@@ -10,8 +9,6 @@ import { AntDesign } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 const CustomerNavigator = () => {
-  const { colors } = useTheme();
-
   return (
     <Tab.Navigator
       initialRouteName="Customer.DailyMenu"
@@ -45,7 +42,7 @@ const CustomerNavigator = () => {
 
           return icon;
         },
-        tabBarActiveTintColor: colors["primary.800"],
+        tabBarActiveTintColor: "#820014",
         tabBarInactiveTintColor: "gray",
       })}
     >
