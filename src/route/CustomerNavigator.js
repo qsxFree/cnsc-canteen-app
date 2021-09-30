@@ -50,23 +50,23 @@ const CustomerNavigator = () => {
         name="Customer.DailyMenu"
         component={DailyMenuScreen}
         options={{
-          title: "Daily Menu",
+          headerShown: false,
         }}
       />
       <Tab.Screen
         name="Customer.Profile"
         component={ProfileScreen}
-        options={{ title: "Profile" }}
+        options={{ headerShown: false }}
       />
       <Tab.Screen
         name="Customer.Notification"
         component={NotificationScreen}
-        options={{ title: "Notification" }}
+        options={{ headerShown: false }}
       />
       <Tab.Screen
         name="Customer.Settings"
         component={SettingScreen}
-        options={{ title: "Settings" }}
+        options={{ headerShown: false }}
       />
     </Tab.Navigator>
   );
