@@ -7,6 +7,7 @@ const mockData = [
     id: 1,
     name: "Kanin w/ rice",
     price: 50.0,
+    category: "rice-meal",
     ratings: 4.2,
     description: "sample description",
     img: "https://images.pexels.com/photos/7538054/pexels-photo-7538054.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -16,6 +17,7 @@ const mockData = [
     id: 2,
     name: "Kanin w/ rice",
     price: 50.0,
+    category: "lunch",
     ratings: 4.2,
     description: "sample description",
     img: "https://images.pexels.com/photos/7538054/pexels-photo-7538054.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -24,6 +26,7 @@ const mockData = [
   {
     id: 3,
     name: "Kanin w/ rice",
+    category: "breakfast",
     price: 50.2,
     ratings: 4.2,
     description: "sample description",
@@ -34,10 +37,11 @@ const mockData = [
     id: 4,
     name: "Kanin w/ rice",
     price: 50.0,
+    category: "snack",
     ratings: 4.2,
     description: "sample description",
     img: "https://images.pexels.com/photos/7538054/pexels-photo-7538054.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    available: true,
+    available: false,
   },
 ];
 

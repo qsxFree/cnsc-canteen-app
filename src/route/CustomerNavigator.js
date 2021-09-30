@@ -42,6 +42,10 @@ const CustomerNavigator = () => {
 
           return icon;
         },
+        tabBarHideOnKeyboard: true,
+        tabBarAllowFontScaling: true,
+        tabBarShowLabel: false,
+        tabBarStyle: { height: 55 },
         tabBarActiveTintColor: "#820014",
         tabBarInactiveTintColor: "gray",
       })}
@@ -50,23 +54,24 @@ const CustomerNavigator = () => {
         name="Customer.DailyMenu"
         component={DailyMenuScreen}
         options={{
+          title: "Menu",
           headerShown: false,
         }}
       />
       <Tab.Screen
         name="Customer.Profile"
         component={ProfileScreen}
-        options={{ headerShown: false }}
+        options={{ title: "Profile", headerShown: false }}
       />
       <Tab.Screen
         name="Customer.Notification"
         component={NotificationScreen}
-        options={{ headerShown: false }}
+        options={{ title: "Notification", headerShown: false }}
       />
       <Tab.Screen
         name="Customer.Settings"
         component={SettingScreen}
-        options={{ headerShown: false }}
+        options={{ title: "Settings", headerShown: false }}
       />
     </Tab.Navigator>
   );
