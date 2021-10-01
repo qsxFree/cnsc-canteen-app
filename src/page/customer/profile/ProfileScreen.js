@@ -9,36 +9,41 @@ import {
   Divider,
   Button,
 } from "native-base";
-import React from "react";
+import React, { useContext } from "react";
 import GeneralHeader from "../../../components/header/GeneralHeader";
+import UserContext from "../../../context/UserContext";
 
 const ProfileScreen = () => {
+  const user = useContext(UserContext);
+  console.log(user);
   return (
     <Stack>
       <GeneralHeader title="You" />
       <VStack m="4">
         <VStack space={3} alignItems="center" justifyContent="center">
-          <Avatar bg="primary.800">RL</Avatar>
-          <Heading>Ralph Royeen A. Lagumen</Heading>
+          <Avatar bg="primary.800">{`${user.user_info.first_name.charAt(
+            0
+          )}${user.user_info.last_name.charAt(0)}`}</Avatar>
+          <Heading>{`${user.user_info.first_name} ${user.user_info.last_name}`}</Heading>
         </VStack>
         <Divider w="full" my="10" />
         <VStack mx="16">
           <HStack justifyContent="space-between">
             <Text fontSize="md">User ID:</Text>
             <Text fontSize="md" bold>
-              18-6969
+              {user.user_info.username}
             </Text>
           </HStack>
           <HStack justifyContent="space-between">
             <Text fontSize="md">Balance:</Text>
             <Text fontSize="md" bold>
-              500
+              {user.current_balance}
             </Text>
           </HStack>
           <HStack justifyContent="space-between">
             <Text fontSize="md">Phone:</Text>
             <Text fontSize="md" bold>
-              (+63)092656698985
+              {user.phone_num}
             </Text>
           </HStack>
           <Button
