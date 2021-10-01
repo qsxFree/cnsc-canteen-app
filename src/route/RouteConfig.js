@@ -22,7 +22,10 @@ const RouteConfig = () => {
 
   return (
     <NavigationContainer theme={navigatorTheme}>
-      <Navigator initialRouteName="Customer.Login">
+      <Navigator
+        initialRouteName="Customer.Login"
+        screenOptions={{ statusBarStyle: "dark" }}
+      >
         {!auth ? (
           <Screen
             name="Customer.Login"

@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import DailyMenuScreen from "../page/customer/menu/DailyMenuScreen";
 import NotificationScreen from "../page/customer/notification/NotificationScreen";
 import ProfileScreen from "../page/customer/profile/ProfileScreen";
 import SettingScreen from "../page/customer/settings/SettingScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import DailyMenuNavigator from "./DailyMenuNavigator";
 
 const Tab = createBottomTabNavigator();
 const CustomerNavigator = () => {
@@ -52,7 +52,7 @@ const CustomerNavigator = () => {
     >
       <Tab.Screen
         name="Customer.DailyMenu"
-        component={DailyMenuScreen}
+        component={DailyMenuNavigator}
         options={{
           title: "Menu",
           headerShown: false,

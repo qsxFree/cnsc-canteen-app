@@ -45,7 +45,7 @@ const mockData = [
   },
 ];
 
-const ProductCardGrid = ({ title }) => {
+const ProductCardGrid = ({ title, navigation }) => {
   return (
     <VStack space="2.5">
       <Heading mx="4" size="md" mt="4">
@@ -54,7 +54,7 @@ const ProductCardGrid = ({ title }) => {
       <ScrollView px="4" horizontal>
         <Flex direction="row">
           {mockData.map((item) => (
-            <ProductCard key={item.id} data={item} />
+            <ProductCard key={item.id} data={item} navigation={navigation} />
           ))}
         </Flex>
       </ScrollView>
