@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "cnsc-canteen-app",
+    "name": "CNSC Cafeteria App",
     "slug": "cnsc-canteen-app",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/img/icon.png",
     "splash": {
@@ -15,9 +15,13 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.cnsc.canteen-app",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.cnsc.canteenApp",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/img/adaptive-icon.png",
         "backgroundColor": "#820014"
