@@ -3,7 +3,7 @@ import React from "react";
 
 const GeneralHeader = ({ title }) => {
   return (
-    <HStack w="full" justifyContent="space-between" mt="12" mb="4" mx="4">
+    <HStack w="full" justifyContent="space-between" mt="4" mb="4" mx="4">
       <Heading size="2xl">{title}</Heading>
     </HStack>
   );

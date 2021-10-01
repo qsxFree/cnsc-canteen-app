@@ -11,45 +11,27 @@ import {
   VStack,
 } from "native-base";
 import React from "react";
+import MenuCategoryBadge from "../badge/MenuCategoryBadge";
 
 const ProductCard = ({ data, navigation }) => {
-  const { category } = data;
-  let categoryColor = "muted";
-  switch (category) {
-    case "rice-meal":
-      categoryColor = "orange";
-      break;
-    case "breakfast":
-      categoryColor = "purple";
-      break;
-    case "lunch":
-      categoryColor = "lightBlue";
-      break;
-    case "snack":
-      categoryColor = "emerald";
-      break;
-  }
-
-  const img = (
-    <Image
-      source={{
-        uri: data.img,
-      }}
-      alt={`${data.name}`}
-    />
-  );
-
   return (
     <Pressable
       onPress={() =>
         navigation.navigate("Customer.DailyMenu.Item", {
-          img: img,
+          data: data,
         })
       }
     >
       <Box shadow="4" rounded="25" w="64" m="2" overflow="hidden">
         <Box>
-          <AspectRatio ratio={16 / 11}>{img}</AspectRatio>
+          <AspectRatio ratio={16 / 11}>
+            <Image
+              source={{
+                uri: data.img,
+              }}
+              alt={`${data.name}`}
+            />
+          </AspectRatio>
         </Box>
         <VStack w="100%" bgColor="warmGray.50" pb="4" px="4">
           <Heading size="md" my="2" color="primary.800" isTruncated>
@@ -61,9 +43,7 @@ const ProductCard = ({ data, navigation }) => {
               {data.ratings}
               <Text sub> / 5.0</Text>
             </Text>
-            <Badge colorScheme={categoryColor} variant="subtle" w="20">
-              {category}
-            </Badge>
+            <MenuCategoryBadge category={data.category} label={data.category} />
           </HStack>
 
           <Text color={data.available ? "darkText" : `danger.600`}>

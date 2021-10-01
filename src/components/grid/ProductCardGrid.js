@@ -9,7 +9,8 @@ const mockData = [
     price: 50.0,
     category: "rice-meal",
     ratings: 4.2,
-    description: "sample description",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra rhoncus dolor sit amet egestas. Etiam imperdiet bibendum leo a commodo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Morbi vehicula ut nunc in tincidunt. Donec sodales maximus velit, vitae iaculis lacus aliquam eget.",
     img: "https://images.pexels.com/photos/7538054/pexels-photo-7538054.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     available: true,
   },
@@ -19,7 +20,8 @@ const mockData = [
     price: 50.0,
     category: "lunch",
     ratings: 4.2,
-    description: "sample description",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra rhoncus dolor sit amet egestas. Etiam imperdiet bibendum leo a commodo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Morbi vehicula ut nunc in tincidunt. Donec sodales maximus velit, vitae iaculis lacus aliquam eget.",
     img: "https://images.pexels.com/photos/7538054/pexels-photo-7538054.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     available: true,
   },
@@ -29,7 +31,8 @@ const mockData = [
     category: "breakfast",
     price: 50.2,
     ratings: 4.2,
-    description: "sample description",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra rhoncus dolor sit amet egestas. Etiam imperdiet bibendum leo a commodo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Morbi vehicula ut nunc in tincidunt. Donec sodales maximus velit, vitae iaculis lacus aliquam eget.",
     img: "https://res.cloudinary.com/djangocloud/image/upload/v1/canteen_media/img/2021/09/27/Pork-Adobo--500x375_gh9ydl",
     available: true,
   },
@@ -39,7 +42,8 @@ const mockData = [
     price: 50.0,
     category: "snack",
     ratings: 4.2,
-    description: "sample description",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra rhoncus dolor sit amet egestas. Etiam imperdiet bibendum leo a commodo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Morbi vehicula ut nunc in tincidunt. Donec sodales maximus velit, vitae iaculis lacus aliquam eget.",
     img: "https://images.pexels.com/photos/7538054/pexels-photo-7538054.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     available: false,
   },

@@ -1,5 +1,5 @@
 import React from "react";
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, StatusBar } from "native-base";
 import theme from "./theme";
 import RouteConfig from "./src/route/RouteConfig";
 

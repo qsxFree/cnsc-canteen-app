@@ -19,7 +19,6 @@ const DailyMenuNavigator = () => {
         component={DailyMenuItemScreen}
         options={{
           headerShown: false,
-          cardOverlayEnabled: true,
           title: "Daily Menu Item",
           gestureDirection: "horizontal",
         }}
