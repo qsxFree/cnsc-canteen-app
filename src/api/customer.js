@@ -9,12 +9,21 @@ const url = SYSTEM_CONSTANT.SERVER_URL;
 
 //Fetching customer info
 export const fetchCustomerProfile = async () => {
-  let token = await Token.getToken();
   return axios({
     method: "get",
     url: `${url}/customer/profile/`,
     headers: {
-      Authorization: `Token ${token}`,
+      Authorization: `Token ${await Token.getToken()}`,
+    },
+  });
+};
+
+export const fetchMenuList = async () => {
+  return axios({
+    method: "get",
+    url: `${url}/customer/menu/`,
+    headers: {
+      Authorization: `Token ${await Token.getToken()}`,
     },
   });
 };

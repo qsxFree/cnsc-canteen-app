@@ -20,6 +20,8 @@ const RouteConfig = () => {
     onSuccess: (data) => setUser(data.data),
     onError: (err) => console.log(err),
     refetchOnMount: true,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 
   return (

@@ -23,9 +23,9 @@ const DailyMenuItemScreen = ({ route, navigation }) => {
           <AspectRatio ratio={16 / 10}>
             <Image
               source={{
-                uri: data.img,
+                uri: data.product.img,
               }}
-              alt={`${data.name}`}
+              alt={`${data.product.name}`}
             />
           </AspectRatio>
           <Button
@@ -46,23 +46,26 @@ const DailyMenuItemScreen = ({ route, navigation }) => {
       </Box>
       <VStack mx="4">
         <Heading size="xl" my="4">
-          {data.name}
+          {data.product.name}
         </Heading>
         <HStack alignItems="center">
           <Text fontSize="sm">Ratings : </Text>
           <Text fontSize="xl" bold>
-            {data.ratings}
+            4.5
           </Text>
           <Text fontSize="sm"> / 5.0</Text>
         </HStack>
         <HStack alignItems="center">
           <Text fontSize="sm">Category : </Text>
-          <MenuCategoryBadge category={data.category} label={data.category} />
+          <MenuCategoryBadge
+            category={data.category.slug}
+            label={data.category.name}
+          />
         </HStack>
         <HStack alignItems="center">
           <Text fontSize="sm">Availability : </Text>
-          <Text color={data.available ? "darkText" : `danger.600`} bold>
-            {data.available ? `Available` : `Not Available`}
+          <Text color={true ? "darkText" : `danger.600`} bold>
+            {true ? `Available` : `Not Available`}
           </Text>
         </HStack>
         <Divider w="full" my="4" />
@@ -70,7 +73,7 @@ const DailyMenuItemScreen = ({ route, navigation }) => {
           <Heading size="sm" mb="2">
             Description :{" "}
           </Heading>
-          <Text textAlign="justify">{data.description}</Text>
+          <Text textAlign="justify">Sample description </Text>
         </VStack>
       </VStack>
     </VStack>

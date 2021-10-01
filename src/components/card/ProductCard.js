@@ -42,37 +42,37 @@ const ProductCard = ({ data, navigation }) => {
               <AspectRatio ratio={16 / 11}>
                 <Image
                   source={{
-                    uri: data.img,
+                    uri: data.product.img,
                   }}
-                  alt={`${data.name}`}
+                  alt={`${data.product.name}`}
                 />
               </AspectRatio>
             </Box>
             <VStack w="100%" bgColor="warmGray.50" pb="4" px="4">
               <Heading size="md" my="2" color="primary.800" isTruncated>
-                {data.name}
+                {data.product.name}
               </Heading>
 
               <HStack my="1" justifyContent="space-between" alignItems="center">
                 <Text bold>
-                  {data.ratings}
+                  4.5
                   <Text sub> / 5.0</Text>
                 </Text>
                 <MenuCategoryBadge
-                  category={data.category}
-                  label={data.category}
+                  category={data.category.slug}
+                  label={data.category.name}
                 />
               </HStack>
 
-              <Text color={data.available ? "darkText" : `danger.600`}>
-                {data.available ? `Available` : `Not Available`}
+              <Text color={true ? "darkText" : `danger.600`}>
+                {true ? `Available` : `Not Available`}
               </Text>
 
               <Divider my="2" w="full" />
               <HStack alignSelf="flex-end">
                 <Text sub>PHP </Text>
                 <Text bold fontSize="2xl">
-                  {data.price}
+                  {data.product.price}
                 </Text>
               </HStack>
             </VStack>

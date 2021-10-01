@@ -17,6 +17,8 @@ const MenuCategoryBadge = ({ category, label }) => {
     case "snack":
       categoryColor = "emerald";
       break;
+    case "dessert":
+      categoryColor = "amber";
   }
   return (
     <Badge colorScheme={categoryColor} variant="subtle" rounded="full">
