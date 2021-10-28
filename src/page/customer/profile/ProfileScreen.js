@@ -14,8 +14,7 @@ import GeneralHeader from "../../../components/header/GeneralHeader";
 import UserContext from "../../../context/UserContext";
 
 const ProfileScreen = () => {
-  const user = useContext(UserContext);
-  console.log(user);
+  const { user } = useContext(UserContext);
   return (
     <Stack>
       <GeneralHeader title="You" />
