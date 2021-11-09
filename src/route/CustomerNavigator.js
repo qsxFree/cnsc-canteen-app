@@ -6,9 +6,11 @@ import SettingScreen from "../page/customer/settings/SettingScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import DailyMenuNavigator from "./DailyMenuNavigator";
+import token from "./../hooks/useToken";
 
 const Tab = createBottomTabNavigator();
 const CustomerNavigator = () => {
+  console.log(token.getToken());
   return (
     <Tab.Navigator
       initialRouteName="Customer.DailyMenu"
