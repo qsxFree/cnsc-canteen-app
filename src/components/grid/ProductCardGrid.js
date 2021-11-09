@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Heading, ScrollView, VStack } from "native-base";
+import { Flex, Heading, ScrollView, Stack, VStack } from "native-base";
 import ProductCard from "../card/ProductCard";
 
 const ProductCardGrid = ({ title, navigation, data }) => {
@@ -8,12 +8,18 @@ const ProductCardGrid = ({ title, navigation, data }) => {
       <Heading mx="4" size="md" mt="4">
         {title}
       </Heading>
-      <ScrollView px="4" horizontal>
-        <Flex direction="row">
+      <ScrollView>
+        <Stack
+          direction="row"
+          flexWrap="wrap"
+          space={4}
+          justifyContent="center"
+          py="1.5"
+        >
           {data.map((item) => (
             <ProductCard key={item.id} data={item} navigation={navigation} />
           ))}
-        </Flex>
+        </Stack>
       </ScrollView>
     </VStack>
   );

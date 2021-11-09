@@ -8,20 +8,19 @@ import {
 } from "native-base";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { fetchMenuList } from "../../../api/customer";
+import { menuListQuery } from "../../../api/customer";
 import DailyMenuButtonGroup from "../../../components/button-group/DailyMenuButtonGroup";
 import ProductCardGrid from "../../../components/grid/ProductCardGrid";
 import GeneralHeader from "../../../components/header/GeneralHeader";
 
 const DailyMenuScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
-  const fetchMenu = useQuery("fetch-menu", fetchMenuList, {
+  const fetchMenu = useQuery("fetch-menu", menuListQuery, {
     onSuccess: (res) => {
-      console.log(res.data);
       setData(res.data);
     },
 
-    onError: (err) => console.err(err),
+    onError: (err) => console.err("Error on fetching daily menu", err),
   });
   return (
     <>
@@ -46,14 +45,11 @@ const DailyMenuScreen = ({ navigation }) => {
         <DailyMenuButtonGroup />
       </Stack>
       {!fetchMenu.isLoading ? (
-        <ScrollView>
-          <ProductCardGrid
-            data={data}
-            title="Available"
-            navigation={navigation}
-          />
-          <ProductCardGrid data={data} title="Others" navigation={navigation} />
-        </ScrollView>
+        <ProductCardGrid
+          data={data}
+          title="Available"
+          navigation={navigation}
+        />
       ) : (
         <Spinner color="primary.800" size="lg" />
       )}

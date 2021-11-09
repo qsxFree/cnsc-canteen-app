@@ -21,7 +21,7 @@ const MenuCategoryBadge = ({ category, label }) => {
       categoryColor = "amber";
   }
   return (
-    <Badge colorScheme={categoryColor} variant="subtle" rounded="full">
+    <Badge colorScheme={categoryColor} variant="subtle" rounded="full" w="auto">
       {label}
     </Badge>
   );

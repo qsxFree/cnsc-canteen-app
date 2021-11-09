@@ -26,10 +26,9 @@ const ProductCard = ({ data, navigation }) => {
         return (
           <Box
             shadow={isPressed ? "0" : "4"}
-            rounded="25"
-            w="64"
-            m="2"
+            rounded="15"
             overflow="hidden"
+            w="48"
             style={{
               transform: [
                 {

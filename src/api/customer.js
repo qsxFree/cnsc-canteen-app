@@ -5,7 +5,7 @@ const axios = require("axios");
 const url = SYSTEM_CONSTANT.SERVER_URL;
 
 //Fetching customer info
-export const fetchCustomerProfile = async () => {
+export const customerProfileQuery = async () => {
   return axios({
     method: "get",
     url: `${url}/customer/profile/`,
@@ -15,7 +15,7 @@ export const fetchCustomerProfile = async () => {
   });
 };
 
-export const fetchMenuList = async () => {
+export const menuListQuery = async () => {
   return axios({
     method: "get",
     url: `${url}/customer/menu/`,
