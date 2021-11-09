@@ -10,12 +10,12 @@ import {
   Button,
   Spinner,
 } from "native-base";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { customerProfileQuery } from "../../../api/customer";
 import GeneralHeader from "../../../components/header/GeneralHeader";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   const [user, setUser] = useState({
     fk_customer: null,
     user_info: {
@@ -37,7 +37,15 @@ const ProfileScreen = () => {
     onSuccess: (data) => {
       setUser(data.data);
     },
+    enabled: false,
   });
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      loginQuery.refetch();
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <Stack>

@@ -6,7 +6,7 @@ import {
   Spinner,
   Stack,
 } from "native-base";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { menuListQuery } from "../../../api/customer";
 import DailyMenuButtonGroup from "../../../components/button-group/DailyMenuButtonGroup";
@@ -15,13 +15,21 @@ import GeneralHeader from "../../../components/header/GeneralHeader";
 
 const DailyMenuScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
-  const fetchMenu = useQuery("fetch-menu", menuListQuery, {
+  const menuQuery = useQuery("fetch-menu", menuListQuery, {
     onSuccess: (res) => {
       setData(res.data);
     },
-
     onError: (err) => console.err("Error on fetching daily menu", err),
+    enabled: false,
   });
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+      menuQuery.refetch();
+    });
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <>
       <Stack w="full">
@@ -44,7 +52,7 @@ const DailyMenuScreen = ({ navigation }) => {
         />
         <DailyMenuButtonGroup />
       </Stack>
-      {!fetchMenu.isLoading ? (
+      {!menuQuery.isLoading ? (
         <ProductCardGrid
           data={data}
           title="Available"
