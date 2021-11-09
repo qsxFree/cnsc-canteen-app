@@ -1,10 +1,23 @@
 import { Heading, HStack, Icon, Pressable, VStack } from "native-base";
 import React from "react";
 import { View, Text } from "react-native";
+import Token from "../../hooks/useToken";
 
 const SettingsListItem = (data) => {
+  let handler = null;
+  if (data.id === 3) {
+    handler = () => {
+      Token.deleteToken()
+        .then((val) => {
+          data.navigation.navigate("Customer.Login");
+        })
+        .catch((err) => {
+          console.log("Error on deleting token");
+        });
+    };
+  }
   return (
-    <Pressable>
+    <Pressable onPress={handler}>
       {({ isHovered, isFocused, isPressed }) => {
         return (
           <HStack

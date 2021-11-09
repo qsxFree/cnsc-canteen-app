@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
+import React, { useContext } from "react";
 import NotificationScreen from "../page/customer/notification/NotificationScreen";
 import ProfileScreen from "../page/customer/profile/ProfileScreen";
 import SettingScreen from "../page/customer/settings/SettingScreen";
@@ -7,10 +7,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import DailyMenuNavigator from "./DailyMenuNavigator";
 import token from "./../hooks/useToken";
+import NotificationContext from "../context/NotificationContext";
 
 const Tab = createBottomTabNavigator();
-const CustomerNavigator = () => {
-  console.log(token.getToken());
+const CustomerNavigator = ({ navigation }) => {
+  const { notificationCount } = useContext(NotificationContext);
   return (
     <Tab.Navigator
       initialRouteName="Customer.DailyMenu"
@@ -68,7 +69,11 @@ const CustomerNavigator = () => {
       <Tab.Screen
         name="Customer.Notification"
         component={NotificationScreen}
-        options={{ title: "Notification", headerShown: false }}
+        options={{
+          title: "Notification",
+          headerShown: false,
+          tabBarBadge: notificationCount === 0 ? null : notificationCount,
+        }}
       />
       <Tab.Screen
         name="Customer.Settings"

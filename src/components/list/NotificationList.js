@@ -13,61 +13,6 @@ const mockData = [
     title: "Order confirmation",
     expired: false,
   },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
-  {
-    transactionId: 123458,
-    title: "Order confirmation",
-    expired: false,
-  },
 ];
 
 const NotificationList = () => {

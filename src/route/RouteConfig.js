@@ -18,7 +18,11 @@ const RouteConfig = () => {
   return (
     <NavigationContainer theme={navigatorTheme}>
       <Navigator
-        initialRouteName={token === null ? "Customer.Login" : "Customer.Home"}
+        initialRouteName={
+          token === undefined || token === null
+            ? "Customer.Login"
+            : "Customer.Home"
+        }
         screenOptions={{ statusBarStyle: "dark" }}
       >
         <Screen

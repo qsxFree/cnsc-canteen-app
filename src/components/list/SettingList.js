@@ -35,11 +35,14 @@ const settingsData = [
   },
 ];
 
-const SettingList = () => {
+const SettingList = ({ navigation }) => {
   return (
     <FlatList
       data={settingsData}
-      renderItem={({ item }) => <SettingsListItem data={item} />}
+      renderItem={({ item }) => {
+        item = { ...item, navigation: navigation };
+        return <SettingsListItem data={item} />;
+      }}
       keyExtractor={(item) => item.id}
     />
   );
