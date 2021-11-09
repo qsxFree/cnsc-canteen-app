@@ -8,6 +8,10 @@ function setToken(token) {
   return SecureStore.setItemAsync("jws", token);
 }
 
+function deleteToken() {
+  return SecureStore.deleteItemAsync("jws");
+}
+
 const useToken = async () => {
   let resultToken = null;
   const result = await SecureStore.getItemAsync("jws");
@@ -23,7 +27,14 @@ const useToken = async () => {
     resultToken = await SecureStore.getItemAsync("jws");
   };
 
-  return { token: resultToken, setToken: setToken };
+  const deleteToken = () => SecureStore.deleteItemAsync("jws");
+
+  return { token: resultToken, setToken: setToken, deleteToken: deleteToken };
 };
 
-export default { getToken: getToken, setToken: setToken, useToken: useToken };
+export default {
+  getToken: getToken,
+  setToken: setToken,
+  useToken: useToken,
+  deleteToken: deleteToken,
+};

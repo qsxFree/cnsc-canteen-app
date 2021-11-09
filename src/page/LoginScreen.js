@@ -3,11 +3,9 @@ import { Button, Heading, Icon, Input, Link, VStack } from "native-base";
 import React, { useContext, useState } from "react";
 import { useMutation } from "react-query";
 import { loginBridge } from "../api/authentication";
-import TokenContext from "../context/TokenContext";
 import TokenStore from "../hooks/useToken";
 
 const LoginScreen = ({ navigation }) => {
-  const { setToken } = useContext(TokenContext);
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
@@ -17,7 +15,6 @@ const LoginScreen = ({ navigation }) => {
     },
     onSuccess: (d, v, c) => {
       TokenStore.setToken(d.data.token).then(() => {
-        setToken(d.data.token);
         navigation.navigate("Customer.Home");
       });
     },

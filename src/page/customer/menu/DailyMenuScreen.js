@@ -19,7 +19,7 @@ const DailyMenuScreen = ({ navigation }) => {
     onSuccess: (res) => {
       setData(res.data);
     },
-    onError: (err) => console.err("Error on fetching daily menu", err),
+    onError: () => console.log("Error on fetching daily menu"),
     enabled: false,
   });
 
