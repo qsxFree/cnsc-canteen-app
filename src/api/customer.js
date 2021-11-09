@@ -24,3 +24,13 @@ export const menuListQuery = async () => {
     },
   });
 };
+
+export const orderListQuery = async () => {
+  return axios({
+    method: "get",
+    url: `${url}/customer/order_list/`,
+    headers: {
+      Authorization: `Token ${await Token.getToken()}`,
+    },
+  });
+};
