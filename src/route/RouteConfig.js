@@ -19,9 +19,8 @@ const RouteConfig = () => {
     <NavigationContainer theme={navigatorTheme}>
       <Navigator
         initialRouteName={
-          token === undefined || token === null
-            ? "Customer.Login"
-            : "Customer.Home"
+          //token === undefined || token === null
+          false ? "Customer.Login" : "Customer.Home"
         }
         screenOptions={{ statusBarStyle: "dark" }}
       >

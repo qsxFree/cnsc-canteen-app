@@ -5,9 +5,11 @@ import NotificationListItem from "../list-item/NotificationListItem";
 const NotificationList = ({ data }) => {
   return (
     <FlatList
+      marginBottom="20"
+      scrollEnabled
       data={data}
       renderItem={({ item }) => <NotificationListItem data={item} />}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item, index) => index.toString()}
     />
   );
 };

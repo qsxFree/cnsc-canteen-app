@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import GeneralHeader from "../../../components/header/GeneralHeader";
 import NotificationList from "../../../components/list/NotificationList";
 import NotificationContext from "../../../context/NotificationContext";
-import * as Notifications from "expo-notifications";
 import { useQuery } from "react-query";
 import { orderListQuery } from "../../../api/customer";
 
@@ -30,9 +29,7 @@ const NotificationScreen = ({ navigation }) => {
   return (
     <Stack>
       <GeneralHeader title="Notification" />
-      <ScrollView>
-        <NotificationList data={notificationData} />
-      </ScrollView>
+      <NotificationList data={notificationData} />
     </Stack>
   );
 };

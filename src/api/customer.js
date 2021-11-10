@@ -34,3 +34,16 @@ export const orderListQuery = async () => {
     },
   });
 };
+
+export const changeOrderStatusQuery = async (data) => {
+  return axios({
+    method: "post",
+    url: `${url}/customer/set_order_status/${data.path}/`,
+    headers: {
+      Authorization: `Token ${await Token.getToken()}`,
+    },
+    data: {
+      status: data.status,
+    },
+  });
+};
