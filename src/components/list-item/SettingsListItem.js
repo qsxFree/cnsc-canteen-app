@@ -3,13 +3,13 @@ import React from "react";
 import { View, Text } from "react-native";
 import Token from "../../hooks/useToken";
 
-const SettingsListItem = (data) => {
-  let handler = null;
+const SettingsListItem = ({ data, navigation }) => {
+  let handler = () => {};
   if (data.id === 3) {
     handler = () => {
       Token.deleteToken()
         .then((val) => {
-          data.navigation.navigate("Customer.Login");
+          navigation.navigate("Customer.Login");
         })
         .catch((err) => {
           console.log("Error on deleting token");
@@ -30,8 +30,8 @@ const SettingsListItem = (data) => {
             bg={isPressed ? "warmGray.200" : "warmGray.100"}
             justifyContent="space-between"
           >
-            <Heading size="sm">{data.data.title}</Heading>
-            <Icon as={data.data.icon} color="gray.600" />
+            <Heading size="sm">{data.title}</Heading>
+            <Icon as={data.icon} color="gray.600" />
           </HStack>
         );
       }}

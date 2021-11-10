@@ -15,11 +15,8 @@ export default App = () => {
   const { token, setToken } = TokenReference.useToken();
   const [notificationCount, setNotificationCount] = useState(0);
 
-  console.log(token);
-
   const _handleIncomingNotification = (notif) => {
     setNotificationCount(notificationCount + 1);
-    console.log(notif.request.content);
   };
 
   useEffect(() => {
