@@ -57,3 +57,16 @@ export const balanceLog = async () => {
     },
   });
 };
+
+export const sendNotificationToken = async (data) => {
+  return axios({
+    method: "post",
+    url: `${url}/customer/add_notif_token/`,
+    headers: {
+      Authorization: `Token ${await Token.getToken()}`,
+    },
+    data: {
+      notif_token: data.token,
+    },
+  });
+};

@@ -4,23 +4,26 @@ import theme from "./theme";
 import RouteConfig from "./src/route/RouteConfig";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { TokenProvider } from "./src/context/TokenContext";
+import { ExpoTokenProvider } from "./src/context/ExpoTokenContext";
 import { NotificationProvider } from "./src/context/NotificationContext";
 import TokenReference from "./src/hooks/useToken";
 import registerPushNotification from "./src/service/registerPushNotification";
 import * as Notifications from "expo-notifications";
+import { LogBox } from "react-native";
 
 const queryClient = new QueryClient();
 
 export default App = () => {
+  LogBox.ignoreLogs(["NativeBase"]);
   const { token, setToken } = TokenReference.useToken();
   const [notificationCount, setNotificationCount] = useState(0);
-
+  const [notifcationToken, setNotifcationToken] = useState("");
   const _handleIncomingNotification = (notif) => {
     setNotificationCount(notificationCount + 1);
   };
 
   useEffect(() => {
-    registerPushNotification();
+    registerPushNotification(setNotifcationToken);
     Notifications.addNotificationReceivedListener(_handleIncomingNotification);
   }, []);
 
@@ -34,7 +37,9 @@ export default App = () => {
           }}
         >
           <TokenProvider value={{ token: token, setToken: setToken }}>
-            <RouteConfig />
+            <ExpoTokenProvider value={{ expoToken: notifcationToken }}>
+              <RouteConfig />
+            </ExpoTokenProvider>
           </TokenProvider>
         </NotificationProvider>
       </NativeBaseProvider>

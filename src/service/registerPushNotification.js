@@ -8,7 +8,7 @@ Notifications.setNotificationHandler({
   }),
 });
 
-export default registerPushNotification = async () => {
+export default registerPushNotification = async (setToken) => {
   if (Constants.isDevice) {
     const { status: existingStatus } =
       await Notifications.getPermissionsAsync();
@@ -21,9 +21,11 @@ export default registerPushNotification = async () => {
       alert("Failed to get push token for push notification!");
       return;
     }
-    const token = (await Notifications.getExpoPushTokenAsync()).data;
+    let token = (await Notifications.getExpoPushTokenAsync()).data;
+    token = token.replace("ExponentPushToken[", "");
+    token = token.replace("]", "");
     console.log(token);
-    this.setState({ expoPushToken: token });
+    setToken(token);
   } else {
     alert("Must use physical device for Push Notifications");
   }

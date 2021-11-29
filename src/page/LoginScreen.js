@@ -12,28 +12,40 @@ import React, { useContext, useState } from "react";
 import { LogBox } from "react-native";
 import { useMutation } from "react-query";
 import { loginBridge } from "../api/authentication";
+import { sendNotificationToken } from "../api/customer";
+import ExpoTokenContext from "../context/ExpoTokenContext";
 import TokenStore from "../hooks/useToken";
 
 const LoginScreen = ({ navigation }) => {
+  const { expoToken } = useContext(ExpoTokenContext);
   const toast = useToast();
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   LogBox.ignoreLogs(["Request"]);
-  const loginMutation = useMutation(loginBridge, {
+
+  const sendToken = useMutation(sendNotificationToken, {
     onError: (e, v, c) => {
-      toast.show({ description: "Invalid login credentials" });
+      toast.show({ description: "Error on setting notification token" });
     },
     onSuccess: (d, v, c) => {
-      TokenStore.setToken(d.data.token).then(() => {
-        navigation.navigate("Customer.Home");
-      });
+      navigation.navigate("Customer.Home");
     },
   });
 
   const _login = () => {
     loginMutation.mutate({ username: usernameValue, password: passwordValue });
   };
+
+  const loginMutation = useMutation(loginBridge, {
+    onError: (e, v, c) => {
+      toast.show({ description: "Invalid login credentials" });
+    },
+    onSuccess: (d, v, c) => {
+      TokenStore.setToken(d.data.token);
+      sendToken.mutate({ token: expoToken });
+    },
+  });
 
   return (
     <VStack h="100%" alignItems="center">
