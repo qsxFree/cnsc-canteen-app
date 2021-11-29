@@ -47,3 +47,13 @@ export const changeOrderStatusQuery = async (data) => {
     },
   });
 };
+
+export const balanceLog = async () => {
+  return axios({
+    method: "get",
+    url: `${url}/customer/balance_logs/`,
+    headers: {
+      Authorization: `Token ${await Token.getToken()}`,
+    },
+  });
+};

@@ -6,8 +6,10 @@ import SettingScreen from "../page/customer/settings/SettingScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import DailyMenuNavigator from "./DailyMenuNavigator";
+import SettingNavigator from "./SettingNavigator";
 import token from "./../hooks/useToken";
 import NotificationContext from "../context/NotificationContext";
+import ProfileNavigator from "./ProfileNavigator";
 
 const Tab = createBottomTabNavigator();
 const CustomerNavigator = ({ navigation }) => {
@@ -63,7 +65,7 @@ const CustomerNavigator = ({ navigation }) => {
       />
       <Tab.Screen
         name="Customer.Profile"
-        component={ProfileScreen}
+        component={ProfileNavigator}
         options={{ title: "Profile", headerShown: false }}
       />
       <Tab.Screen
@@ -77,7 +79,7 @@ const CustomerNavigator = ({ navigation }) => {
       />
       <Tab.Screen
         name="Customer.Settings"
-        component={SettingScreen}
+        component={SettingNavigator}
         options={{ title: "Settings", headerShown: false }}
       />
     </Tab.Navigator>

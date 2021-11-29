@@ -99,6 +99,9 @@ const ProfileScreen = ({ navigation }) => {
                     color="#820014"
                   />
                 }
+                onPress={() =>
+                  navigation.navigate("Customer.Profile.Transaction")
+                }
               >
                 View Transaction History
               </Button>

@@ -5,7 +5,11 @@ import Token from "../../hooks/useToken";
 
 const SettingsListItem = ({ data, navigation }) => {
   let handler = () => {};
-  if (data.id === 3) {
+  if (data.id === 0) {
+    handler = () => {
+      navigation.navigate("Customer.Settings.Transaction");
+    };
+  } else if (data.id === 3) {
     handler = () => {
       Token.deleteToken()
         .then((val) => {

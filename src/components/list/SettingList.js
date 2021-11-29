@@ -5,29 +5,28 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
 
 const settingsData = [
   {
-    id: 5,
-    title: "Transaction History.",
+    id: 0,
+    title: "Transaction History",
     icon: <MaterialIcons name="history" />,
   },
   {
-    id: 4,
+    id: 1,
     title: "Change Mobile No.",
     icon: <AntDesign name="mobile1" />,
   },
   {
-    id: 1,
+    id: 2,
     title: "Change Password",
     icon: <MaterialCommunityIcons name="form-textbox-password" />,
   },
-  {
-    id: 2,
-    title: "Change PIN",
-    icon: <Ionicons name="md-keypad-outline" />,
-  },
+  // {
+  //   id: 2,
+  //   title: "Change PIN",
+  //   icon: <Ionicons name="md-keypad-outline" />,
+  // },
   {
     id: 3,
     title: "Sign out",
@@ -42,7 +41,7 @@ const SettingList = ({ navigation }) => {
       renderItem={({ item }) => (
         <SettingsListItem data={item} navigation={navigation} />
       )}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item, index) => index.toString()}
     />
   );
 };
