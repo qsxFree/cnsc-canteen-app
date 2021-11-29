@@ -5,7 +5,6 @@ import React, { useContext, useState } from "react";
 import LoginScreen from "../page/LoginScreen";
 import CustomerNavigator from "./CustomerNavigator";
 import { navigatorTheme } from "../../theme";
-import { UserProvider } from "../context/UserContext";
 import TokenContext from "../context/TokenContext";
 
 const Stack = createNativeStackNavigator();
@@ -28,19 +27,20 @@ const RouteConfig = () => {
           name="Customer.Login"
           component={LoginScreen}
           options={{
-            title: "Customer Login",
+            title: "Login",
+            headerBackVisible: false,
 
-            headerRight: () => (
-              <Button
-                variant="outline"
-                size="xs"
-                px="4"
-                borderColor="primary.800"
-                _text={{ color: "primary.800" }}
-              >
-                Admin
-              </Button>
-            ),
+            // headerRight: () => (
+            //   <Button
+            //     variant="outline"
+            //     size="xs"
+            //     px="4"
+            //     borderColor="primary.800"
+            //     _text={{ color: "primary.800" }}
+            //   >
+            //     Admin
+            //   </Button>
+            // ),
           }}
         />
         <Screen

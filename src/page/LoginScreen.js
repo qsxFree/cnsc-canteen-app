@@ -1,17 +1,28 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { Button, Heading, Icon, Input, Link, VStack } from "native-base";
+import {
+  Button,
+  Heading,
+  Icon,
+  Input,
+  Link,
+  VStack,
+  useToast,
+} from "native-base";
 import React, { useContext, useState } from "react";
+import { LogBox } from "react-native";
 import { useMutation } from "react-query";
 import { loginBridge } from "../api/authentication";
 import TokenStore from "../hooks/useToken";
 
 const LoginScreen = ({ navigation }) => {
+  const toast = useToast();
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  LogBox.ignoreLogs(["Request"]);
   const loginMutation = useMutation(loginBridge, {
     onError: (e, v, c) => {
-      console.error("Can't Login", e);
+      toast.show({ description: "Invalid login credentials" });
     },
     onSuccess: (d, v, c) => {
       TokenStore.setToken(d.data.token).then(() => {
@@ -37,7 +48,7 @@ const LoginScreen = ({ navigation }) => {
           }}
         />
         <Input
-          type="password"
+          type={passwordVisible ? "text" : "password"}
           mx="10"
           placeholder="Password"
           value={passwordValue}
@@ -50,6 +61,9 @@ const LoginScreen = ({ navigation }) => {
               size={5}
               mr="2"
               color="muted.400"
+              onPress={() => {
+                setPasswordVisible(!passwordVisible);
+              }}
             />
           }
         />
@@ -62,9 +76,11 @@ const LoginScreen = ({ navigation }) => {
         >
           Login
         </Button>
-        <Link mx="10" _text={{ color: "primary.800" }}>
-          Forgot password?
-        </Link>
+        {
+          //   <Link mx="10" _text={{ color: "primary.800" }}>
+          //   Forgot password?
+          // </Link>
+        }
       </VStack>
     </VStack>
   );
