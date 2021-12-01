@@ -54,7 +54,7 @@ const ProductCard = ({ data, navigation }) => {
 
               <HStack my="1" justifyContent="space-between" alignItems="center">
                 <Text bold>
-                  4.5
+                  {data.rating}
                   <Text sub> / 5.0</Text>
                 </Text>
                 <MenuCategoryBadge

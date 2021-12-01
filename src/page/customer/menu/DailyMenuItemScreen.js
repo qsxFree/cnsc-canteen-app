@@ -51,7 +51,7 @@ const DailyMenuItemScreen = ({ route, navigation }) => {
         <HStack alignItems="center">
           <Text fontSize="sm">Ratings : </Text>
           <Text fontSize="xl" bold>
-            4.5
+            {data.rating}
           </Text>
           <Text fontSize="sm"> / 5.0</Text>
         </HStack>
@@ -64,11 +64,16 @@ const DailyMenuItemScreen = ({ route, navigation }) => {
         </HStack>
         <HStack alignItems="center">
           <Text fontSize="sm">Availability : </Text>
-          <Text color={true ? "darkText" : `danger.600`} bold>
-            {true ? `Available` : `Not Available`}
+          <Text color={data.is_available ? "darkText" : `danger.600`} bold>
+            {data.is_available ? `Available` : `Not Available`}
           </Text>
         </HStack>
         <Divider w="full" my="4" />
+        <VStack>
+          <Heading size="lg" mb="2">
+            Php {data.product.price}
+          </Heading>
+        </VStack>
       </VStack>
     </VStack>
   );
