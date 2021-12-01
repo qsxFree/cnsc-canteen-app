@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import SettingScreen from "../page/customer/settings/SettingScreen";
 import TransactionHistoryScreen from "../page/customer/settings/TransactionHistoryScreen";
+import ChangeMobileNumber from "../page/customer/settings/ChangeMobileNumber";
 
 const Stack = createStackNavigator();
 const SettingNavigator = () => {
@@ -21,7 +22,15 @@ const SettingNavigator = () => {
           title: "Transaction History",
           gestureDirection: "horizontal",
         }}
-      ></Stack.Screen>
+      />
+       <Stack.Screen
+        name="Customer.Settings.ChangeMobile"
+        component={ChangeMobileNumber}
+        options={{
+          title: "Change Mobile Number",
+          gestureDirection: "horizontal",
+        }}
+      />
     </Stack.Navigator>
   );
 };
