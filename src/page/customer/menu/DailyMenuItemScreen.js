@@ -69,12 +69,6 @@ const DailyMenuItemScreen = ({ route, navigation }) => {
           </Text>
         </HStack>
         <Divider w="full" my="4" />
-        <VStack>
-          <Heading size="sm" mb="2">
-            Description :{" "}
-          </Heading>
-          <Text textAlign="justify">Sample description </Text>
-        </VStack>
       </VStack>
     </VStack>
   );
