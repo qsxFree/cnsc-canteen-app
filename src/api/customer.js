@@ -73,13 +73,6 @@ export const sendNotificationToken = async (data) => {
 };
 
 export const editProfile = async (data) => {
-  console.log({
-    first_name: data.user_info.first_name,
-    last_name: data.user_info.last_name,
-    pin: 1234,
-    address: data.address,
-    phone_num: data.phone_num,
-  });
   return axios({
     method: "put",
     url: `${url}/customer/profile/`,
@@ -92,6 +85,20 @@ export const editProfile = async (data) => {
       pin: 1234,
       address: data.address,
       phone_num: data.phone_num,
+    },
+  });
+};
+
+export const changeRatings = async (data) => {
+  console.log(data);
+  return axios({
+    method: "post",
+    url: `${url}/customer/rate_product/${data.slug}/`,
+    headers: {
+      Authorization: `Token ${await Token.getToken()}`,
+    },
+    data: {
+      rate: data.rating,
     },
   });
 };

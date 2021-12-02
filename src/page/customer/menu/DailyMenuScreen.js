@@ -50,7 +50,7 @@ const DailyMenuScreen = ({ navigation }) => {
             ></Button>
           }
         />
-        <DailyMenuButtonGroup />
+        {/**<DailyMenuButtonGroup /> */}
       </Stack>
       {!menuQuery.isLoading ? (
         <ProductCardGrid

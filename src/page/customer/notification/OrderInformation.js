@@ -46,7 +46,6 @@ const OrderInformation = ({ route, navigation }) => {
         <Text fontSize="md" bold>
           Items
         </Text>
-        <Divider my="2" />
         <FlatList
           scrollEnabled
           height={300}
