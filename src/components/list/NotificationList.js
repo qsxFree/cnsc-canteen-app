@@ -2,7 +2,7 @@ import { FlatList } from "native-base";
 import React from "react";
 import NotificationListItem from "../list-item/NotificationListItem";
 import moment from "moment";
-const NotificationList = ({ data, notificationRefetch }) => {
+const NotificationList = ({ data, notificationRefetch, navigation }) => {
   const currentDate = moment().format();
 
   return (
@@ -15,6 +15,7 @@ const NotificationList = ({ data, notificationRefetch }) => {
           data={item}
           notificationRefetch={notificationRefetch}
           currentDate={currentDate}
+          navigation={navigation}
         />
       )}
       keyExtractor={(item, index) => index.toString()}

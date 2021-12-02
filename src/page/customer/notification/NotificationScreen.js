@@ -39,6 +39,7 @@ const NotificationScreen = ({ navigation }) => {
         <Spinner color="primary.800" size="lg" />
       ) : (
         <NotificationList
+          navigation={navigation}
           data={notificationData}
           notificationRefetch={orderQuery.refetch}
         />

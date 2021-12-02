@@ -4,10 +4,13 @@ import moment from "moment";
 import { useMutation, useQuery } from "react-query";
 import { changeOrderStatusQuery } from "../../api/customer";
 
-const NotificationListItem = ({ data, notificationRefetch, currentDate }) => {
-  console.log("=========================================================");
+const NotificationListItem = ({
+  data,
+  notificationRefetch,
+  currentDate,
+  navigation,
+}) => {
   let date = moment(data.date_ordered).add(2, "minute").format(); //estimating time of delivery
-  console.log("PROCESSING DATE");
 
   //conditions
   const overdue =
@@ -16,8 +19,6 @@ const NotificationListItem = ({ data, notificationRefetch, currentDate }) => {
   const validPending =
     moment(currentDate).isSameOrBefore(date) &&
     data.status.toLowerCase() === "pending";
-  console.log("OVERDUE", overdue);
-  console.log("VALID PENDING", validPending);
 
   const setOrderStatusQuery = useMutation(changeOrderStatusQuery, {
     onSuccess: (d, v, c) => {
@@ -59,7 +60,6 @@ const NotificationListItem = ({ data, notificationRefetch, currentDate }) => {
         </Button>
       </HStack>
     );
-    console.log("VALID PENDING");
   } else if (overdue) {
     // _triggerStatus(data.id, "EXPIRED");
     render = (
@@ -67,33 +67,46 @@ const NotificationListItem = ({ data, notificationRefetch, currentDate }) => {
         EXPIRED
       </Text>
     );
-    console.log("OVERDUE");
   } else {
     render = (
       <Text color="muted.400" italic>
         {data.status}
       </Text>
     );
-    console.log("ELSE");
   }
 
+  const _itemPressed = () => {
+    navigation.navigate("Customer.Order.Information", data);
+  };
+
   return (
-    <Pressable>
-      <VStack rounded="8" bgColor="warmGray.100" m="0.5" mx="4" shadow="1">
-        <HStack m="2" mx="4" justifyContent="space-between">
-          <Text fontSize="lg">Order</Text>
-          <Text sub color="muted.400">
-            {moment(data.date_ordered).calendar()}
-          </Text>
-        </HStack>
-        <HStack mx="4" mb="2">
-          <Text color="muted.500">Transaction ID: </Text>
-          <Text bold> {data.id}</Text>
-        </HStack>
-        <HStack mx="4" mb="2" justifyContent="flex-end">
-          {render}
-        </HStack>
-      </VStack>
+    <Pressable onPress={_itemPressed}>
+      {({ isHovered, isFocused, isPressed }) => {
+        return (
+          <VStack
+            rounded="8"
+            bgColor="warmGray.100"
+            m="0.5"
+            mx="4"
+            shadow="1"
+            bg={isPressed ? "warmGray.200" : "warmGray.100"}
+          >
+            <HStack m="2" mx="4" justifyContent="space-between">
+              <Text fontSize="lg">Order</Text>
+              <Text sub color="muted.400">
+                {moment(data.date_ordered).calendar()}
+              </Text>
+            </HStack>
+            <HStack mx="4" mb="2">
+              <Text color="muted.500">Transaction ID: </Text>
+              <Text bold> {data.id}</Text>
+            </HStack>
+            <HStack mx="4" mb="2" justifyContent="flex-end">
+              {render}
+            </HStack>
+          </VStack>
+        );
+      }}
     </Pressable>
   );
 };

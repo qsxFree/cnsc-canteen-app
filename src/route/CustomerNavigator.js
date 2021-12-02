@@ -10,6 +10,7 @@ import SettingNavigator from "./SettingNavigator";
 import token from "./../hooks/useToken";
 import NotificationContext from "../context/NotificationContext";
 import ProfileNavigator from "./ProfileNavigator";
+import OrderNavigator from "./OrderNavigator";
 
 const Tab = createBottomTabNavigator();
 const CustomerNavigator = ({ navigation }) => {
@@ -70,7 +71,7 @@ const CustomerNavigator = ({ navigation }) => {
       />
       <Tab.Screen
         name="Customer.Notification"
-        component={NotificationScreen}
+        component={OrderNavigator}
         options={{
           title: "Notification",
           headerShown: false,
