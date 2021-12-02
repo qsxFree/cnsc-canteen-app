@@ -22,9 +22,6 @@ export default registerPushNotification = async (setToken) => {
       return;
     }
     let token = (await Notifications.getExpoPushTokenAsync()).data;
-    token = token.replace("ExponentPushToken[", "");
-    token = token.replace("]", "");
-    console.log(token);
     setToken(token);
   } else {
     alert("Must use physical device for Push Notifications");

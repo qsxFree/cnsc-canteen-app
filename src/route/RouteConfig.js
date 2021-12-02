@@ -5,22 +5,26 @@ import React, { useContext, useState } from "react";
 import LoginScreen from "../page/LoginScreen";
 import CustomerNavigator from "./CustomerNavigator";
 import { navigatorTheme } from "../../theme";
-import TokenContext from "../context/TokenContext";
+import TokenStore from "../hooks/useToken";
 
 const Stack = createNativeStackNavigator();
 const Screen = Stack.Screen;
 const Navigator = Stack.Navigator;
 
 const RouteConfig = () => {
-  const { token } = useContext(TokenContext);
-
+  const [token, setToken] = useState("");
+  TokenStore.getToken()
+    .then((result) => {
+      setToken(result);
+    })
+    .catch((error) => {
+      setToken("");
+    });
+  console.log("RouteConfig", token);
   return (
     <NavigationContainer theme={navigatorTheme}>
       <Navigator
-        initialRouteName={
-          //token === undefined || token === null
-          false ? "Customer.Login" : "Customer.Home"
-        }
+        initialRouteName={"Customer.Login"}
         screenOptions={{ statusBarStyle: "dark" }}
       >
         <Screen
