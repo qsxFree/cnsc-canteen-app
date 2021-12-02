@@ -1,18 +1,28 @@
-import { Button, Heading, HStack, Pressable, Text, VStack } from "native-base";
+import { Button, HStack, Pressable, Spinner, Text, VStack } from "native-base";
 import React, { useState } from "react";
 import moment from "moment";
 import { useMutation, useQuery } from "react-query";
 import { changeOrderStatusQuery } from "../../api/customer";
 
-const NotificationListItem = ({ data }) => {
-  let date = moment(data.date_ordered).add(1, "minute").format();
-  const currentDate = moment().format();
+const NotificationListItem = ({ data, notificationRefetch, currentDate }) => {
+  console.log("=========================================================");
+  let date = moment(data.date_ordered).add(2, "minute").format(); //estimating time of delivery
+  console.log("PROCESSING DATE");
 
-  const [status, setStatus] = useState(data.status);
+  //conditions
+  const overdue =
+    moment(currentDate).isAfter(date) &&
+    data.status.toLowerCase() === "pending";
+  const validPending =
+    moment(currentDate).isSameOrBefore(date) &&
+    data.status.toLowerCase() === "pending";
+  console.log("OVERDUE", overdue);
+  console.log("VALID PENDING", validPending);
 
   const setOrderStatusQuery = useMutation(changeOrderStatusQuery, {
     onSuccess: (d, v, c) => {
       console.log("status updated");
+      notificationRefetch();
     },
     onError: (e, v, c) => {
       console.error("Error on setting status", e);
@@ -25,8 +35,10 @@ const NotificationListItem = ({ data }) => {
 
   let render = null;
 
-  if (moment(date).isAfter(currentDate) && status === "PENDING") {
-    render = (
+  if (validPending) {
+    render = setOrderStatusQuery.isLoading ? (
+      <Spinner />
+    ) : (
       <HStack space={2}>
         <Button
           variant="ghost"
@@ -47,19 +59,22 @@ const NotificationListItem = ({ data }) => {
         </Button>
       </HStack>
     );
-  } else if (moment(date).isSameOrBefore(currentDate) && status === "PENDING") {
-    setOrderStatusQuery.mutate({ path: data.id, status: "EXPIRED" });
+    console.log("VALID PENDING");
+  } else if (overdue) {
+    // _triggerStatus(data.id, "EXPIRED");
     render = (
       <Text color="muted.400" italic>
         EXPIRED
       </Text>
     );
+    console.log("OVERDUE");
   } else {
     render = (
       <Text color="muted.400" italic>
-        {status}
+        {data.status}
       </Text>
     );
+    console.log("ELSE");
   }
 
   return (

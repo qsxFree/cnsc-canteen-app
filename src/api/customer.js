@@ -36,8 +36,9 @@ export const orderListQuery = async () => {
 };
 
 export const changeOrderStatusQuery = async (data) => {
+  console.log(data);
   return axios({
-    method: "post",
+    method: "put",
     url: `${url}/customer/set_order_status/${data.path}/`,
     headers: {
       Authorization: `Token ${await Token.getToken()}`,
