@@ -102,3 +102,14 @@ export const changeRatings = async (data) => {
     },
   });
 };
+
+export const changePassword = async (data) => {
+  return axios({
+    method: "put",
+    url: `${url}/customer/change_password/`,
+    headers: {
+      Authorization: `Token ${await Token.getToken()}`,
+    },
+    data: data,
+  });
+};

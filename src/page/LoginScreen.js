@@ -27,6 +27,7 @@ const LoginScreen = ({ navigation }) => {
   const sendToken = useMutation(sendNotificationToken, {
     onError: (e, v, c) => {
       toast.show({ description: "Error on setting notification token" });
+      navigation.navigate("Customer.Home");
     },
     onSuccess: (d, v, c) => {
       navigation.navigate("Customer.Home");

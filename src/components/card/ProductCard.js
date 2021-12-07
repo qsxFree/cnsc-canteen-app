@@ -27,8 +27,11 @@ const ProductCard = ({ data, navigation }) => {
           <Box
             shadow={isPressed ? "0" : "4"}
             rounded="15"
+            my="2"
             overflow="hidden"
-            w="48"
+            w="32"
+            maxW="48"
+            minW="40"
             style={{
               transform: [
                 {

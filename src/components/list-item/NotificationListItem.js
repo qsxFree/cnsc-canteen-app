@@ -61,7 +61,7 @@ const NotificationListItem = ({
       </HStack>
     );
   } else if (overdue) {
-    // _triggerStatus(data.id, "EXPIRED");
+    setOrderStatusQuery.mutateAsync({ path: data.id, status: "EXPIRED" });
     render = (
       <Text color="muted.400" italic>
         EXPIRED

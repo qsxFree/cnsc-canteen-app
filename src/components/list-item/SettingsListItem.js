@@ -9,12 +9,15 @@ const SettingsListItem = ({ data, navigation }) => {
     handler = () => {
       navigation.navigate("Customer.Settings.Transaction");
     };
-  }else if (data.id === 1) {
+  } else if (data.id === 1) {
     handler = () => {
       navigation.navigate("Customer.Settings.ChangeMobile");
     };
-  }
-   else if (data.id === 3) {
+  } else if (data.id === 2) {
+    handler = () => {
+      navigation.navigate("Customer.Settings.ChangePassword");
+    };
+  } else if (data.id === 3) {
     handler = () => {
       Token.deleteToken()
         .then((val) => {
