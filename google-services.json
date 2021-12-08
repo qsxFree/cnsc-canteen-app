@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "655601385875",
+    "project_id": "cnsc-cos",
+    "storage_bucket": "cnsc-cos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655601385875:android:14e9e13662aed6a1b62866",
+        "android_client_info": {
+          "package_name": "com.cnsc.canteenApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655601385875-7a3gvb3bo5913mdqnhlhspedikop78lu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfvwp0XlwovYOsR1GlPwzb0oopel6LvD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655601385875-7a3gvb3bo5913mdqnhlhspedikop78lu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

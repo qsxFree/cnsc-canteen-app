@@ -30,6 +30,15 @@ const NotificationListItem = ({
     },
   });
 
+  const setOrderExpired = useMutation(changeOrderStatusQuery, {
+    onSuccess: (d, v, c) => {
+      console.log("status updated");
+    },
+    onError: (e, v, c) => {
+      console.error("Error on setting status", e);
+    },
+  });
+
   const _triggerStatus = (id, status) => {
     setOrderStatusQuery.mutate({ path: id, status: status });
   };
@@ -61,7 +70,10 @@ const NotificationListItem = ({
       </HStack>
     );
   } else if (overdue) {
-    setOrderStatusQuery.mutateAsync({ path: data.id, status: "EXPIRED" });
+    React.useEffect(() => {
+      setOrderExpired.mutate({ path: data.id, status: "EXPIRED" });
+    }, []);
+
     render = (
       <Text color="muted.400" italic>
         EXPIRED

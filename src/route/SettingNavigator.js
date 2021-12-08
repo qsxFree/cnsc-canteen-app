@@ -36,7 +36,7 @@ const SettingNavigator = () => {
         name="Customer.Settings.ChangePassword"
         component={ChangePasswordScreen}
         options={{
-          title: "Change Mobile Password",
+          title: "Change Password",
           gestureDirection: "horizontal",
         }}
       />
