@@ -10,13 +10,13 @@ import {
   Pressable,
 } from "native-base";
 
-const OrderItemCard = ({ item, navigation }) => {
+const OrderItemCard = ({ item, navigation, status }) => {
   const _handlePress = () => {
     navigation.navigate("Customer.Order.Rate", item);
   };
 
   return (
-    <Pressable onPress={_handlePress}>
+    <Pressable onPress={status === "RECEIVED" ? _handlePress : () => {}}>
       {({ isHovered, isFocused, isPressed }) => {
         return (
           <HStack

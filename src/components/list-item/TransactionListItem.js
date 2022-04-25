@@ -6,13 +6,16 @@ import moment from "moment";
 const TransactionListItem = ({ data }) => {
   const cashierType = data.cashier.split("-")[0];
   let subText = null;
-  if (data.is_deduct && cashierType === "CCASH") {
+  if (data.is_deduct && (cashierType === "CCASH" || cashierType === "CMNGR")) {
     subText = (
       <Text sub color="error.700">
         Order Deduction
       </Text>
     );
-  } else if (data.is_deduct && cashierType === "SCASH") {
+  } else if (
+    data.is_deduct &&
+    (cashierType === "SCASH" || cashierType === "ADMN")
+  ) {
     subText = (
       <Text sub color="error.700">
         Withdrawal

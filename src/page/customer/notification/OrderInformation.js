@@ -51,7 +51,11 @@ const OrderInformation = ({ route, navigation }) => {
           height={300}
           data={data.items}
           renderItem={({ item }) => (
-            <OrderItemCard item={item} navigation={navigation} />
+            <OrderItemCard
+              item={item}
+              status={data.status}
+              navigation={navigation}
+            />
           )}
           keyExtractor={(item, index) => index.toString()}
         />

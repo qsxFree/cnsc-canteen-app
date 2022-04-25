@@ -15,9 +15,12 @@ import GeneralHeader from "../../../components/header/GeneralHeader";
 
 const DailyMenuScreen = ({ navigation }) => {
   const [data, setData] = useState([]);
+  const [original, setOriginal] = useState([]);
+  const [searchStr, setSearchStr] = useState("");
   const menuQuery = useQuery("fetch-menu", menuListQuery, {
     onSuccess: (res) => {
       setData(res.data);
+      setOriginal(res.data);
     },
     onError: () => console.log("Error on fetching daily menu"),
     enabled: false,
@@ -30,6 +33,21 @@ const DailyMenuScreen = ({ navigation }) => {
     return unsubscribe;
   }, [navigation]);
 
+  const _search = () => {
+    if (searchStr.length === 0) {
+      setData(original);
+      return;
+    }
+    const search = searchStr.toLowerCase();
+    const filtered = original.filter((item) => {
+      return (
+        item.product.name.toLowerCase().includes(search) ||
+        item.category.name.toLowerCase().includes(search)
+      );
+    });
+    setData(filtered);
+  };
+  //data.product.name
   return (
     <>
       <Stack w="full">
@@ -39,15 +57,19 @@ const DailyMenuScreen = ({ navigation }) => {
           variant="rounded"
           py="1"
           px="4"
+          value={searchStr}
           _focus={{ borderColor: "primary.800" }}
           placeholder="Search"
+          onChangeText={(e) => setSearchStr(e)}
+          onSubmitEditing={_search}
           size="xs"
           mx="4"
           InputRightElement={
             <Button
               bgColor="transparent"
               rightIcon={<SearchIcon size="xs" color="muted.500" />}
-            ></Button>
+              onPress={_search}
+            />
           }
         />
         {/**<DailyMenuButtonGroup /> */}

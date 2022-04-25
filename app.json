@@ -2,7 +2,7 @@
   "expo": {
     "name": "CNSC Cafeteria App",
     "slug": "cnsc-canteen-app",
-    "version": "0.5.8",
+    "version": "0.6.2",
     "orientation": "portrait",
     "icon": "./assets/img/icon.png",
     "splash": {
